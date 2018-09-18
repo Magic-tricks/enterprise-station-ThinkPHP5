@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$confres['siteName']}-{$cateInfo.catename}</title>
+<meta name="description" content="{$cateInfo.desc}" />
+<meta name="keywords" content="{$cateInfo.keywords}" />
+<link rel="stylesheet" type="text/css" media="all" href="__INDEX__/style/style.css" />
+<script src="__INDEX__/style/jquery-1.4.1.min.js" type="text/javascript"></script>
+    <script src="__INDEX__/style/jquery.js" type="text/javascript"></script>
+    <script src="__INDEX__/style/jquery.error.js" type="text/javascript"></script>
+    <script src="__INDEX__/style/jtemplates.js" type="text/javascript"></script>
+    <script src="__INDEX__/style/jquery.form.js" type="text/javascript"></script>
+    <script src="__INDEX__/style/lazy.js" type="text/javascript"></script>
+    <script type="text/javascript" src="__INDEX__/style/wp-sns-share.js"></script>
+    <script type="text/javascript" src="__INDEX__/style/voterajax.js"></script>
+    <script type="text/javascript" src="__INDEX__/style/userregister.js"></script>
+    <link rel="stylesheet" href="__INDEX__/style/pagenavi-css.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="__INDEX__/style/votestyles.css" type="text/css" />
+    <link rel="stylesheet" href="__INDEX__/style/voteitup.css" type="text/css" />
+    <style type="text/css">
+        #wrapper
+        {
+            background-color: #ffffff;
+        }
+        .single_entry{margin-top:30px;}
+    </style>
+</head>
+<body class="single2">
+
+<script type="text/javascript">
+    function showMask() {
+        $("#mask").css("height", $(document).height());
+        $("#mask").css("width", $(document).width());
+        $("#mask").show();
+    }  
+</script>
+<div id="mask" class="mask" onclick="CloseMask()"></div>
+{include file="public/head"}
+
+    <div id="wrapper">
+
+        <div class="single_entry page_entry">
+            <div class="path">
+                <a href="{:url('Index/index')}">主页</a> >
+                {volist name="posArr" id="vo"}
+                <a href="{:url('Imglist/imglist',['cateid'=>$vo['id']])}">{$vo.catename}</a> >
+                {/volist}
+                <div class="clear"></div>
+            </div>
+
+            <div class="entry">
+
+          {$cates.content}
+                <div class="clear">
+                </div>
+            </div>
+    </div>
+
+    </div>
+{include file="public/footer"}
+<div style="display: none;" id="scroll">
+</div>
+<script type="text/javascript" src="__INDEX__/style/z700bike_global.js"></script>
+</body>
+</html>

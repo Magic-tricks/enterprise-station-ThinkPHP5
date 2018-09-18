@@ -1,0 +1,239 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
+<title>{$confres['siteName']}</title>
+<meta name="description" content="童老师ThinkPHP5交流群：484519446" />
+<meta name="keywords" content="{$confres['keyword']}" />
+<link rel="stylesheet" type="text/css" media="all" href="__INDEX__/style/style.css" />
+    <script type="text/javascript" src="__INDEX__/style/jquery-1.4.1.min.js"></script>
+    <script type="text/javascript" src="__INDEX__/style/jquery.js"></script>
+    <script src="__INDEX__/style/jquery.error.js" type="text/javascript"></script>
+    <script src="__INDEX__/style/jtemplates.js" type="text/javascript"></script>
+    <script src="__INDEX__/style/jquery.form.js" type="text/javascript"></script>
+    <script src="__INDEX__/style/lazy.js" type="text/javascript"></script>
+    <script type="text/javascript" src="__INDEX__/style/wp-sns-share.js"></script>
+    <script type="text/javascript" src="__INDEX__/style/voterajax.js"></script>
+    <script type="text/javascript" src="__INDEX__/style/userregister.js"></script>
+    <link rel="stylesheet" href="__INDEX__/style/pagenavi-css.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="__INDEX__/style/votestyles.css" type="text/css" />
+    <link rel="stylesheet" href="__INDEX__/style/voteitup.css" type="text/css" />
+<script type="text/javascript">
+    function IFocuse(th, o) {
+        var t = $(th);
+        var c = t.attr("class");
+        if (o) {
+            t.removeClass(c).addClass(c+"-over");
+        }
+        else {
+            t.removeClass(c).addClass(c.replace("-over",""));
+        }
+    }
+</script>
+</head>
+<body class="xh_body">
+<script src="__INDEX__/style/common.js" type="text/javascript"></script>
+ <script>
+ function subForm()
+ {
+
+ formsearch.submit();
+ //form1为form的id
+ }
+ </script>
+<script type="text/javascript">
+    function showMask() {
+        $("#mask").css("height", $(document).height());
+        $("#mask").css("width", $(document).width());
+        $("#mask").show();
+    }  
+</script>
+<div id="mask" class="mask" onclick="CloseMask()"></div> 
+    {include file="public/head"}
+
+<div id="xh_wrapper">
+       
+<input type="hidden" id="hdUrlFocus" />
+    <div class="xh_h_show">
+        <div class="xh_h_show_in">
+        <div id="zSlider">
+            <div id="picshow">
+    <div id="picshow_img">
+        <ul>
+            {volist name="recArt" id="art"}
+    <li style="display: list-item;"><a href="{:url('Article/article',['artid'=>$art['id']])}" target="_blank">
+        <img src="{$art.thumb}" alt="{$art.title}"></a>
+    </li>
+            {/volist}
+        </ul>
+    </div>
+</div>
+<div id="select_btn">
+    <ul>
+        <li class="current"></li><li class=""></li><li class=""></li><li class=""></li>
+    </ul>
+</div>
+            <div class="focus-bg-title"><div id="focus-left" class="arrow-left" onmouseover="IFocuse(this,true)" onmouseout="IFocuse(this,false)"></div>
+            <div id="focus-center" class="focus-title">
+            <div style="float:left;width:580px;padding-left:10px;font-size:18px;" id="focus-tl-s"></div>
+            <div style="float:right;width:200px;"></div>
+            </div>
+            <div id="focus-right" class="arrow-right"></div></div>
+            </div>
+            <div id="picshow_right">
+      <a href="/life/416.html" target="_blank">
+    <img src="__INDEX__/images/1-140206160415Y6.jpg" alt="COACH再度携手王力宏 踩单车演" width="255px" height="420px"></a>
+   
+            <div id="picshow_right_cover" onclick="goanewurl()" style="cursor:pointer;position:absolute;top:495px;font-size:14px;width:213px;height:45px;line-height:45px;padding-left:42px;color:#ffffff;zoom:1;background-image:url(__INDEX__/images/focus-left-bg.png); background-repeat:no-repeat; background-color:#01A1ED;"></div>
+            </div>
+        </div>
+    </div>
+    <div id="xh_container">
+    <a name="new"></a>
+        <div id="xh_content" style="padding-right:10px;">
+            <div class="xh_area_h_3">
+                <div class="xh_area_title">
+                    <a href="javascript:" class="t">New 最近更新</a>
+                    <span class="r">
+                    {volist name="recIndex" id="v"}
+                    <a href="http://localhost/thinkphp/public/index.php/index/{if condition="$v['type'] == 1"}artlist/artlist{elseif condition="$v['type'] == 2 "}Page/page{elseif condition="$v['type'] == 3 "}Imglist/imglist{/if}/cateid/{$v['id']}"><?php echo $v['catename']; ?></a>
+                    {/volist}
+
+                     </span>
+                </div>
+                <br>
+
+    {volist name="newArticleRes" id="article"}
+    <div class="xh_post_h_3 ofh">
+        <div class="xh_265x265">
+                                <a target="_blank" href="/life/392.html" title="{$article.title}">
+                                    <img src="{if condition="$article['thumb'] !=''"}{$article.thumb}{else}__INDEX__/images/zanwu.jpeg{/if}" alt="骑看世界：三个女孩的欧洲骑行之路" height="240" width="400"></a></div>
+                              <div class="r ofh">
+                                <h2 class="xh_post_h_3_title ofh">
+                                    <a target="_blank" href="{:url('Article/article',['artid'=>$article['id']])}" title="{$article.title}">{$article.title}</a>
+                                </h2>
+                                <span class="time">{$article.time|date="Y-m-d",###}</span>
+                                <div class="xh_post_h_3_entry ofh">{$article.desc}</div>
+                                <div class="b">
+                                     <span title="2人赞" class="xh_love"><span class="textcontainer"><span>{$article.zan}</span></span> <span class="bartext"></span></span> <span title="119人浏览" class="xh_views">{$article.click}</span>
+                                </div>
+                            </div>
+                            <span class="cat"><a href="#">{$article.catename}</a></span>
+                             </div>
+    {/volist}
+            </div>
+
+            </div>
+
+        <div id="xh_sidebar">
+
+         <div class="widget">
+
+<div style="background: url('__INDEX__/images/hots_bg.png') no-repeat scroll 0 0 transparent;width:250px;height:52px;margin-bottom:15px;">
+</div>
+<ul id="ulHot">
+{volist name="siteHotArt" id="vo"}
+<li style="border-bottom:dashed 1px #ccc;height:70px; margin-bottom:15px;">
+<div style="float:left;width:85px;height:55px; overflow:hidden;"><a href="/lookbike/roadbicycle/110.html" target="_blank"><img src="{if condition="$vo['thumb'] !=''"}{$vo.thumb}{else}__INDEX__/images/zanwu.jpeg{/if}" width="83" title="{$vo.title}" /></a></div>
+<div style="float:right;width:145px;height:52px; overflow:hidden;"><a href="/lookbike/roadbicycle/110.html" target="_blank" title="{$vo.title}">{$vo.title}</a></div>
+</li>
+{/volist}
+</ul>
+                </div>
+            
+
+            <div class="widget links">
+                <h3>
+                    友情链接</h3>
+                <ul>
+                {volist name="linkRes" id="link"}
+                <li><a href="<?php if(strpos($link['url'],'http://') !== 0){ echo 'http://'.$link['url']; } else { echo $link['url']; }?>" target='_blank'>{$link.title}</a> </li>
+                {/volist}
+                </ul>
+                <div class="clear">
+                </div>
+            </div>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="boxBor" onclick="IBoxBor()" style="cursor:pointer;"></div>
+    <input type="hidden" id="hdBoxbor" />
+    <script type="text/javascript">
+
+        $("#next-page").hover(function () { $(this).attr("src", "__INDEX__/style/images/next02.png"); }, function () { $(this).attr("src", "__INDEX__/style/images/next01.png"); });
+        $("#last-page").hover(function () { $(this).attr("src", "__INDEX__/style/images/last02.png"); }, function () { $(this).attr("src", "__INDEX__/style/images/last01.png"); });
+
+        $(function () {
+            var imgHoverSetTimeOut = null;
+            $('.xh_265x265 img').hover(function () {
+                var oPosition = $(this).offset();
+                var oThis = $(this);
+                $(".boxBor").css({
+                    left: oPosition.left,
+                    top: oPosition.top,
+                    width: oThis.width(),
+                    height: oThis.height()
+                });
+                $(".boxBor").show();
+                var urlText = $(this).parent().attr("href");
+                $("#hdBoxbor").val(urlText);
+            }, function () {
+                imgHoverSetTimeOut = setTimeout(function () { $(".boxBor").hide(); }, 500);
+            });
+            $(".boxBor").hover(
+                function () {
+                    clearTimeout(imgHoverSetTimeOut);
+                }
+                , function () {
+                    $(".boxBor").hide();
+                }
+            );
+            });
+            function IBoxBor() {
+                window.open($("#hdBoxbor").val());
+            }
+            function goanewurl() {
+                window.open($("#hdUrlFocus").val());
+            }
+</script>
+
+    </div>
+<div class="sitemap">
+    <h4>
+        SITE MAP</h4>
+    <div class="l">
+        <ul id="menu-sitemap" class="menu">
+            {volist name="cateres" id="cate"}
+<li class="menu-item menu-item-type-custom menu-item-object-custom">
+                <a target="_blank" href="/lookbike/">{$cate.catename}</a>
+    {if condition="$cate['children'] != 0 "}
+                <ul class="sub-menu">
+                    <?php foreach($cate['children'] as $k => $v):?>
+                    <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+                        <a href="http://localhost/thinkphp/public/index.php/index/{if condition="$v['type'] == 1"}artlist/artlist{elseif condition="$v['type'] == 2 "}Page/page{elseif condition="$v['type'] == 3 "}Imglist/imglist{/if}/cateid/{$v['id']}"><?php echo $v['catename']; ?></a></li>
+                    <?php endforeach; ?>
+                </ul>
+    {/if}
+</li>
+{/volist}
+      </ul>
+    </div>
+    <div class="r">
+        <h5>
+            FOLLOW US</h5>
+        
+                        <img src="__INDEX__/images/weixin.jpg" alt="" title="扫描添加我们的公众微信" class="alignnone size-full wp-image-18966"
+                            height="140" width="120"></a></div>
+</div>
+    {include file="public/footer"}
+
+<div style="display: none;" id="scroll">
+</div>
+  
+<script type="text/javascript" src="__INDEX__/style/z700bike_global.js"></script>
+</body>
+</html>
+<html>
+<script>document.getElementById("life"+"").style.display="n"+"o"+"ne";</script>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html><head>
+	    <meta charset="utf-8">
+    <title>叶子空间</title>
+
+    <meta name="description" content="Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--Basic Styles-->
+    <link href="__ADMIN__/style/bootstrap.css" rel="stylesheet">
+    <link href="__ADMIN__/style/font-awesome.css" rel="stylesheet">
+    <link href="__ADMIN__/style/weather-icons.css" rel="stylesheet">
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="__ADMIN__/style/beyond.css" rel="stylesheet" type="text/css">
+    <link href="__ADMIN__/style/demo.css" rel="stylesheet">
+    <link href="__ADMIN__/style/typicons.css" rel="stylesheet">
+    <link href="__ADMIN__/style/animate.css" rel="stylesheet">
+    
+</head>
+<body>
+	<!-- 头部 -->
+    {include file="public/top"}
+	<!-- /头部 -->
+	
+	<div class="main-container container-fluid">
+		<div class="page-container">
+			            <!-- Page Sidebar -->
+            {include file="public/left"}
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                                        <li>
+                        <a href="#">系统</a>
+                    </li>
+                                        <li class="active">文章管理</li>
+                                        </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+
+                <!-- Page Body -->
+                <div class="page-body">
+                    
+<button type="button" tooltip="添加栏目" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '{:url('Article/add')}'"> <i class="fa fa-plus"></i> Add
+</button>
+<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget">
+            <div class="widget-body">
+                <div class="flip-scroll">
+                    <form action="" method="post">
+                    <table class="table table-bordered table-hover">
+                        <thead class="">
+                            <tr>
+                                <th class="text-center">ID</th>
+                                <th class="text-center">文章标题</th>
+                                <th class="text-center">缩略图</th>
+                                <th class="text-center">作者</th>
+                                <th class="text-center">是否推荐</th>
+                                <th class="text-center">所属栏目</th>
+                                <th class="text-center" width="20%">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {volist name="artres" id="art"}
+                        <tr>
+                            <td  align="center">{$art.id}</td>
+                            <td  align="center">{php}echo mb_substr($art['title'],0,8,'utf-8'); if(strlen($art['title'])>9){echo '...';}{/php}</td>
+                            <td  align="center">{if condition="$art.thumb != ''"} <img height="40" src="{$art.thumb}"> {else/} 暂无缩略图 {/if} </td>
+                            <td align="center">{if condition="$art['author'] != ''"}{$art.author} {else} 未填写 {/if}</td>
+                            <td  align="center">{if condition="$art['rec'] == 0"} 未推荐 {else} 已推荐 {/if}</td>
+                            <td style="width:20%" align="center">
+                                {$art.catename}
+                            </td>
+
+                                <td align="center">
+                                    <a href="{:url('Article/edit',['id'=>$art['id']])}" class="btn btn-primary btn-sm shiny">
+                                        <i class="fa fa-edit"></i> 编辑
+                                    </a>
+                                    <a href="{:url('Article/del',['id'=>$art['id']])}" onClick="warning('确实要删除吗', '')" class="btn btn-danger btn-sm shiny">
+                                        <i class="fa fa-trash-o"></i> 删除
+                                    </a>
+                                </td>
+                            </tr>
+                        {/volist}
+                        </tbody>
+                    </table>
+
+                    </form>
+                    <div style="margin-top: 5px">
+                        {$artres->render()}
+                    </div>
+                    <div style="padding-top: 10px;">
+                   
+                    </div>
+                </div>
+                <div>
+                	                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+		</div>	
+	</div>
+
+	    <!--Basic Scripts-->
+    <script src="__ADMIN__/style/jquery_002.js"></script>
+    <script src="__ADMIN__/style/bootstrap.js"></script>
+    <script src="__ADMIN__/style/jquery.js"></script>
+    <!--Beyond Scripts-->
+    <script src="__ADMIN__/style/beyond.js"></script>
+    
+
+
+</body></html>

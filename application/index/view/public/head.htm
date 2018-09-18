@@ -1,0 +1,51 @@
+
+<div id="header_wrap">
+    <div id="header">
+        <div style="float: left; width: 310px;">
+            <h1>
+                <a href="/" title="DEMO12演示站">DEMO12演示站</a>
+                <div class="" id="logo-sub-class">
+                </div>
+            </h1>
+        </div>
+        <div id="navi">
+
+<ul id="jsddm">
+<li><a class="navi_home" href="{:url('index/index')}">首页</a></li>
+{volist name="cateres" id="cate"}
+<li><a href="http://localhost/thinkphp/public/index.php/index/{if condition="$cate['type'] == 1"}Artlist/artlist{elseif condition="$cate['type'] == 2 "}Page/page{elseif condition="$cate['type'] == 3 "}Imglist/imglist{/if}/cateid/{$cate['id']}">{$cate.catename}</a>
+    {if condition="$cate['children'] != 0 "}
+<ul>
+<?php foreach($cate['children'] as $k => $v):?>
+<li><a href="http://localhost/thinkphp/public/index.php/index/{if condition="$v['type'] == 1"}artlist/artlist{elseif condition="$v['type'] == 2 "}Page/page{elseif condition="$v['type'] == 3 "}Imglist/imglist{/if}/cateid/{$v['id']}"><?php echo $v['catename']; ?></a></li>
+<?php endforeach; ?>
+</ul>
+    {/if}
+</li>
+{/volist}
+</ul>
+
+            <div style="clear: both;">
+            </div>
+
+            
+        </div>
+        <div style="float: right; width: 209px;">
+            <div class="widget" style="height: 30px; padding-top: 20px;">
+                <div style="float: left;">
+      <form  name="formsearch" action="{:url('Search/search')}" method="get">
+            <input name="keywords" type="text" style="background-color: #000000;padding-left: 10px; font-size: 12px;font-family: 'Microsoft Yahei'; color: #999999;height: 29px; width: 160px; border: solid 1px #666666; line-height: 28px;" id="go" placeholder="在这里搜索..."  />
+        </form>
+                        </div>
+                <div style="float: left;">
+                    <img src="/thinkphp/public/static/index/images/search-new.png" id="imgSearch" style="cursor: pointer; margin: 0px;
+                        padding: 0px;" onclick="subForm()" /></div>
+                <div style="clear: both;">
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+</div>

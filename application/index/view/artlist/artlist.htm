@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$confres['siteName']}-{$cateInfo.catename}</title>
+<meta name="description" content="{$cateInfo.desc}" />
+<meta name="keywords" content="{$cateInfo.keywords}" />
+    <link href="__INDEX__/style/bootstrap.css" rel="stylesheet">
+    <script src="__INDEX__/style/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" media="all" href="__INDEX__/style/style.css" />
+    <script src="__INDEX__/style/jquery-1.4.1.min.js" type="text/javascript"></script>
+    <script src="__INDEX__/style/jquery.error.js" type="text/javascript"></script>
+    <script src="__INDEX__/style/jtemplates.js" type="text/javascript"></script>
+    <script src="__INDEX__/style/jquery.form.js" type="text/javascript"></script>
+    <script src="__INDEX__/style/lazy.js" type="text/javascript"></script>
+    <script type="text/javascript" src="__INDEX__/style/wp-sns-share.js"></script>
+    <script type="text/javascript" src="__INDEX__/style/voterajax.js"></script>
+    <script type="text/javascript" src="__INDEX__/style/userregister.js"></script>
+    <link rel="stylesheet" href="__INDEX__/style/votestyles.css" type="text/css" />
+    <link rel="stylesheet" href="__INDEX__/style/voteitup.css" type="text/css" />
+   <link rel="stylesheet" href="__INDEX__/style/list.css" type="text/css" />
+</head>
+<body id="list_style_2" class="list_style_2">
+ <script>
+ function subForm()
+ {
+
+ formsearch.submit();
+ //form1为form的id
+ }
+ </script>
+<script type="text/javascript">
+    function showMask() {
+        $("#mask").css("height", $(document).height());
+        $("#mask").css("width", $(document).width());
+        $("#mask").show();
+    }  
+</script>
+<div id="mask" class="mask" onclick="CloseMask()"></div>
+
+ {include file="public/head"}
+    <div id="wrapper">
+       
+
+    <div id="xh_container">
+        <div id="xh_content">
+
+        <div class="path">
+            <a href="{:url('Index/index')}">主页</a> >
+            {volist name="posArr" id="vo"}
+            <a href="{:url('Article/article',['cateid'=>$vo['id']])}">{$vo.catename}</a> >
+            {/volist}
+        </div><div class="clear"></div>
+            <div class="xh_area_h_3" style="margin-top: 40px;">
+    {volist name="artRes" id="article"}
+    <div class="xh_post_h_3 ofh">
+
+                            <div class="xh">
+                                <a target="_blank" href="/lookbike/bmx/240.html" title="{$article.title}">
+                                <img src="{if condition="$article['thumb'] !=''"}{$article.thumb}{else}__INDEX__/images/zanwu.jpeg{/if}" alt="{$article.title}" height="240" width="400"></a>
+                            </div>
+
+                            <div class="r ofh">
+                                <h2 class="xh_post_h_3_title ofh" style="height:60px;">
+                                    <a target="_blank" href="{:url('Article/article',['artid'=>$article['id']])}" title="{$article.title}">{$article.title}</a>
+                                </h2>
+                                <span class="time">{$article.time|date="Y年m月d日",###}</span>
+                                <div class="xh_post_h_3_entry ofh" style="color:#555;height:80px; overflow:hidden;">
+                                   {if condition="strlen($article['desc']) > 50"}{$article.desc|mb_substr=###,0,50}...{else} {$article.desc} {/if}
+                                </div>
+                                <div class="b">
+                                    <a href="{:url('Article/article',['artid'=>$article['id']])}" class="xh_readmore" rel="nofollow">read
+                                        more</a> <span title="0人赞" class="xh_love"><span class="textcontainer"><span>0</span></span> </span> <span title="{$article.click}人浏览" class="xh_views">
+                                                    {$article.click}</span>
+                                </div>
+                            </div>
+    </div>
+    {/volist}
+                    
+                <div id="pagination"><div class="wp-pagenavi">
+                    {$artRes->render()}
+                </div></div>
+            </div>
+        </div>
+        <div id="xh_sidebar">        
+<!-- 右侧 -->
+
+         <div class="widget">
+
+<div style="background: url('__INDEX__/images/hots_bg.png') no-repeat scroll 0 0 transparent;width:250px;height:52px;margin-bottom:15px;">
+</div>
+<ul id="ulHot">
+    {volist name="HotRes" id="HotArt"}
+<li style="border-bottom:dashed 1px #ccc;height:70px; margin-bottom:15px;">
+<div style="float:left;width:85px;height:55px; overflow:hidden;"><a href="{:url('Article/article',['artid'=>$HotArt['id']])}" target="_blank"><img src="{if condition="$HotArt['thumb'] !=''"}{$HotArt.thumb}{else}__INDEX__/images/zanwu.jpeg{/if}" width="83" title="{$HotArt.title}" /></a></div>
+<div style="float:right;width:145px;height:52px; overflow:hidden;"><a href="{:url('Article/article',['artid'=>$HotArt['id']])}" target="_blank" title="{$HotArt.title}">{$HotArt.title}</a></div>
+</li>
+    {/volist}
+</ul>
+                </div>
+            
+            <div class="widget portrait">
+    <div>
+        <div class="textwidget">
+            <a href="/tougao.html"><img src="__INDEX__/images/tg.jpg" alt="鎶曠ǹ"></a><br><br>
+<script type="text/javascript">BAIDU_CLB_fillSlot("870073");</script>
+<script type="text/javascript">BAIDU_CLB_fillSlot("870080");</script>
+<script type="text/javascript">BAIDU_CLB_fillSlot("870081");</script>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="boxBor"></div>
+
+    <div class="boxBor" onclick="IBoxBor()" style="cursor:pointer;"></div>
+    <script type="text/javascript">
+        $(function () {
+            var imgHoverSetTimeOut = null;
+            $('.xh_265x265 img').hover(function () {
+                var oPosition = $(this).offset();
+                var oThis = $(this);
+                $(".boxBor").css({
+                    left: oPosition.left,
+                    top: oPosition.top,
+                    width: oThis.width(),
+                    height: oThis.height()
+                });
+                $(".boxBor").show();
+                var urlText = $(this).parent().attr("href");
+                $("#hdBoxbor").val(urlText);
+            }, function () {
+                imgHoverSetTimeOut = setTimeout(function () { $(".boxBor").hide(); }, 500);
+            });
+            $(".boxBor").hover(
+                function () {
+                    clearTimeout(imgHoverSetTimeOut);
+                }
+                , function () {
+                    $(".boxBor").hide();
+                }
+            );
+        });
+        function IBoxBor() {
+            window.open($("#hdBoxbor").val());
+        }
+        function goanewurl() {
+            window.open($("#hdUrlFocus").val());
+        }
+</script>
+
+    </div>
+
+ {include file="public/footer"}
+<div style="display: none;" id="scroll">
+</div>
+<script type="text/javascript" src="__INDEX__/style/z700bike_global.js"></script>
+
+</body>
+</html>

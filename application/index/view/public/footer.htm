@@ -1,0 +1,18 @@
+
+ <div id="footer_wrap">
+    <div id="footer">
+        <div class="footer_navi">
+            <ul id="menu-%e5%b0%be%e9%83%a8%e5%af%bc%e8%88%aa" class="menu">
+                {volist name="recBottom" id="v"}
+                <li id="menu-item-156" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-156">
+                    <a href="http://localhost/thinkphp/public/index.php/index/{if condition="$v['type'] == 1"}artlist/artlist{elseif condition="$v['type'] == 2 "}Page/page{elseif condition="$v['type'] == 3 "}Imglist/imglist{/if}/cateid/{$v['id']}"><?php echo $v['catename']; ?></a>
+                </li>
+                {/volist}
+            </ul>
+        </div>
+        <div class="footer_info">
+            <span class="legal">Copyright &copy; 2002-2014 ThinkPHP5 版权所有&nbsp;&nbsp;&nbsp;<a href="#">
+                粤ICP备******号</a>&nbsp;&nbsp;&nbsp;
+        </div>
+    </div>
+</div>
